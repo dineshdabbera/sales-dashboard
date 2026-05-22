@@ -55,14 +55,11 @@ Your JSON file should be an array of objects like:
 ## 📷 Screenshots
 
 ### Dashboard Overview
-
-<img width="1920" height="1020" alt="Screenshot 2026-05-22 091056" src="https://github.com/user-attachments/assets/174f73ea-d42e-4185-a03f-88fc265cc3a6" />
-<img width="1920" height="1020" alt="Screenshot 2026-05-22 091056" src="https://github.com/user-attachments/assets/8a2f805d-f70e-4af6-bad4-aa9dfb603cd7" />
-<img width="1920" height="1020" alt="Screenshot 2026-05-22 091056" src="https://github.com/user-attachments/assets/102a4cb3-afc1-4f82-9197-a8742f4f70ad" />
-<img width="1920" height="1020" alt="Screenshot 2026-05-22 091056" src="https://github.com/user-attachments/assets/065c15bc-f716-4e55-a44c-d2329dd5d10e" />
-<img width="1920" height="1020" alt="Screenshot 2026-05-22 091056" src="https://github.com/user-attachments/assets/0839ca31-8783-4b22-aab8-6bf0222910c2" />
-<img width="1920" height="1020" alt="Screenshot 2026-05-22 091056" src="https://github.com/user-attachments/assets/1c1fbe8b-053b-4329-a01d-b94e811d9dda" />
-<img width="1920" height="1020" alt="Screenshot 2026-05-22 091056" src="https://github.com/user-attachments/assets/35d61830-c464-47bf-b0a3-92d232597fd4" />
+<img width="1920" height="1020" alt="Screenshot 2026-05-22 091022" src="https://github.com/user-attachments/assets/2492a486-9550-4ccf-8702-ec6aeeba02a3" />
+<img width="1920" height="1020" alt="Screenshot 2026-05-22 091045" src="https://github.com/user-attachments/assets/efdd8b87-de46-4ce3-a45c-614d335dcd63" />
+<img width="1920" height="1020" alt="Screenshot 2026-05-22 091049" src="https://github.com/user-attachments/assets/e40eb6e4-4169-4ec1-8e34-35c9102a0273" />
+<img width="1920" height="1020" alt="Screenshot 2026-05-22 091053" src="https://github.com/user-attachments/assets/5bdc14c2-01f6-4c40-8d50-6aeca6fff08b" />
+<img width="1920" height="1020" alt="Screenshot 2026-05-22 091056" src="https://github.com/user-attachments/assets/1bf36daa-2fdd-455c-88dc-5dd0e70e8076" />
 
 
 
