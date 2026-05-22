@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Glass Sales Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #cfe9f7, #a6d8f0);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        #upload {
+            display: block;
+            margin: 0 auto 20px auto;
+            padding: 10px;
+        }
+
+        .chart {
+            width: 60%;
+            height: 400px;
+            margin: 20px auto;
+            padding: 20px;
+
+            /* Glassmorphism */
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Sales Performance Dashboard</h1>
+
+<input type="file" id="upload" accept=".json">
+
+<div id="salesTrend" class="chart"></div>
+<div id="profitSales" class="chart"></div>
+<div id="categorySales" class="chart"></div>
+<div id="regionSales" class="chart"></div>
+<div id="discountProfit" class="chart"></div>
+
+<script>
+document.getElementById('upload').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const data = JSON.parse(e.target.result);
+        processData(data);
+    };
+    reader.readAsText(file);
+});
+
+function processData(data) {
+    let salesByDate = {}, profitByDate = {}, categorySales = {}, regionSales = [];
+    let discountArr = [], profitArr = [];
+
+    data.forEach(row => {
+        let date = new Date(row["Order Date"]).toISOString().split('T')[0];
+
+        salesByDate[date] = (salesByDate[date] || 0) + row["Sales"];
+        profitByDate[date] = (profitByDate[date] || 0) + row["Profit"];
+
+        categorySales[row["Category"]] = (categorySales[row["Category"]] || 0) + row["Sales"];
+
+        regionSales.push({ region: row["Region"], sales: row["Sales"] });
+
+        discountArr.push(row["Discount"]);
+        profitArr.push(row["Profit"]);
+    });
+
+    let dates = Object.keys(salesByDate).sort();
+    let salesValues = dates.map(d => salesByDate[d]);
+    let profitValues = dates.map(d => profitByDate[d]);
+
+    let catNames = Object.keys(categorySales);
+    let catValues = Object.values(categorySales);
+
+    let regionMap = {};
+    regionSales.forEach(r => {
+        regionMap[r.region] = (regionMap[r.region] || 0) + r.sales;
+    });
+
+    let regionNames = Object.keys(regionMap);
+    let regionValues = Object.values(regionMap);
+
+    Plotly.newPlot('salesTrend', [{
+        x: dates,
+        y: salesValues,
+        type: 'scatter',
+        mode: 'lines+markers'
+    }], { title: 'Total Sales Trend' });
+
+    Plotly.newPlot('profitSales', [
+        { x: dates, y: salesValues, name: 'Sales', type: 'bar' },
+        { x: dates, y: profitValues, name: 'Profit', type: 'bar' }
+    ], { title: 'Sales vs Profit', barmode: 'group' });
+
+    Plotly.newPlot('categorySales', [{
+        x: catNames,
+        y: catValues,
+        type: 'bar'
+    }], { title: 'Sales by Category' });
+
+    Plotly.newPlot('regionSales', [{
+        labels: regionNames,
+        values: regionValues,
+        type: 'pie'
+    }], { title: 'Sales by Region' });
+
+    Plotly.newPlot('discountProfit', [{
+        x: discountArr,
+        y: profitArr,
+        mode: 'markers',
+        type: 'scatter'
+    }], {
+        title: 'Discount vs Profit',
+        xaxis: { title: 'Discount' },
+        yaxis: { title: 'Profit' }
+    });
+}
+</script>
+
+</body>
+</html>
