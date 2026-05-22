@@ -25,6 +25,7 @@ Upload your own JSON dataset and instantly visualize key business insights.
 ---
 
 ## 📁 Dataset Format
+Download json file that present in repo
 
 Your JSON file should be an array of objects like:
 
