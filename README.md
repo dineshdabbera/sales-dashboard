@@ -8,7 +8,7 @@ Upload your own JSON dataset and instantly visualize key business insights.
 
 ## 🚀 Live Demo
 
-👉 https://dineshdabbera.github.io/sales-dashboard/
+👉 https://dineshdabbera.github.io/FUTURE_ML_01/
 
 ---
 
